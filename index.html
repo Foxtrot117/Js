@@ -18,8 +18,9 @@
         <div class="container d-flex flex-column align-items-center justify-content-center">
             <h1 class="display-4">
                 Ejercicio Js (JavaScript)
-                <p>Este es un parrafo creado por otro usuario</p>
             </h1>
+
+            <p>Este es un parrafo creado por otro usuario</p>
 
             <p>Ingresa las palabras que desees separadas por un salto de linea</p>
             <p>El resultado te mostrara las letras en posiciones pares, y separadas por un espacio, las posiciones nones</p>
@@ -34,10 +35,43 @@
                 </div>
             </div>
 
-            <button class="btn btn-success">Revisar</button>
+            <button class="btn btn-success" onclick="revisandoCadenas()">¡Revisar!</button>
 
         </div>
     </div>
+
+    <script>
+        revisandoCadenas1 = () => {
+            let respuesta = {};
+            let palabras = document.getElementById('palabras').value;
+            palabras = palabras.split(/\r?\n/);
+            palabras.array.forEach(palabra => {
+                let tamañoCadena = palabra.length;
+                let cadenaPar = "";
+                let cadenaNon = "";
+
+                for(let x = 0; 0 < tamañoCadena; x++){
+                    let letra = palabra[x];
+                    if(x === 0 || x % 2 === 0){
+                        cadenaPar += letra;
+                    }
+                    else{
+                        cadenaNon += letra;
+                    }
+                }
+
+                respuesta[palabra] = [cadenaPar, cadenaNon];
+            });
+
+            let contenedorResultado = document.getElementById('resultado');
+            contenedorResultado.innerHTML = "";
+            for(let palabra in respuesta){
+                contenedorResultado.innerText += 'palabra ingresada: ' + palabra + '\n';
+                contenedorResultado.innerText += 'Resultado: ' + respuesta[palabra][0] + " " + respuesta[palabra][1] + '\n\n';
+            }
+
+        }
+    </script>
     
 </body>
 </html>
